@@ -1,23 +1,21 @@
 # code developed by Jackie Cohen; revised by Paul Resnick
 # further revised by Colleen van Lent for Python3
-#Robbie Bracci
 import nltk # requires some downloading/installing dependencies to use all its features; numpy is especially tricky to install
+from nltk.book import *
 import random
-
-# import nltk
+from nltk import word_tokenize, sent_tokenize
 nltk.download('punkt')
 
-from nltk import word_tokenize,sent_tokenize
 
 debug = False #True
 
 # get file from user to make mad lib out of
 if debug:
 	print ("Getting information from file madlib_test.txt...\n")
-fname = "madlibtest2.txt" # need a file with this name in directory
 
-f = open(fname, 'r')
-para = f.read()
+str1 = (text2 [:150])
+para = ' '.join(str1)
+
 tokens = nltk.word_tokenize(para)
 print("TOKENS")
 print(tokens)
@@ -29,8 +27,8 @@ if debug:
 	for tup in tagged_tokens[:5]:
 		print (tup)
 
-tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective"}
-substitution_probabilities = {"NN":.1,"NNS":.2,"VB":.25,"JJ":.25}
+tagmap = {"NN":"a noun","NNS":"a plural noun","NNP":"Proper noun, singular","VB":"a verb","JJ":"an adjective"}
+substitution_probabilities = {"NN":.15,"NNS":.10,"NNP":.10,"VB":.10,"JJ":.10, "VPB":.10}
 
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
