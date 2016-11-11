@@ -22,19 +22,19 @@ y = requests.get(base_url)
 soup = BeautifulSoup(y.text, "html.parser")
 
 
-findword = soup.find_all(text = re.compile('student'))
+findword = soup.find_all(text = re.compile('student')) #using a real expression to find all forms of student on the page
 for word in findword:
-    fixed_text = str(word).replace('student', 'AMAZING student')
+    fixed_text = str(word).replace('student', 'AMAZING student') #replaces all possibilities of student with AMAzing student
     word.replace_with(fixed_text)
 
 for new_image in soup.findAll('iframe'):
-	new_image['src'] = "/Users/robertbracci/desktop/project3/SI206/icecream.jpg"
+	new_image['src'] = "/Users/robertbracci/desktop/project3/SI206/icecream.jpg" #replaces the iframe image with the image I assigned it from my desktop
 
 for local_image in soup.findAll('img'):
-	local_image['src'] = "/Users/robertbracci/desktop/project3/SI206/HW3-StudentCopy/Media/logo.png"
+	local_image['src'] = "/Users/robertbracci/desktop/project3/SI206/HW3-StudentCopy/Media/logo.png" #replaces the local image 'img' with the image I assigned it
 
 file = open("UMSI_ROBBIE.html", "w")
 print('Generating complete html file')
-file.write(str(soup))
+file.write(str(soup)) #creates and writes the html file
 file.close()
 print('Done')
